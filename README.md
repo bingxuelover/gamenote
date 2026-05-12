@@ -1,0 +1,2 @@
+# gemenote
+game guide notes
