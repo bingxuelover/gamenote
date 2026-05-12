@@ -1,2 +1,2 @@
-# gemenote
+# gamenote
 game guide notes
