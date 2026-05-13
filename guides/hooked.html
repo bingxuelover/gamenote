@@ -1,0 +1,280 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hooked Beginner's Guide</title>
+    <style>
+      :root {
+        --bg: #f4f4f8;
+        --surface: #ffffff;
+        --surface-soft: #eef2ff;
+        --text: #111827;
+        --muted: #6b7280;
+        --primary: #2563eb;
+        --primary-dark: #1d4ed8;
+        --border: #d1d5db;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+      }
+
+      a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: var(--primary-dark);
+      }
+
+      header {
+        position: relative;
+        min-height: 320px;
+        padding: 4rem 1rem;
+        background-image: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.65)), url('images/hooked.png');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #f8fafc;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: clamp(2.4rem, 4vw, 4rem);
+        line-height: 1.05;
+      }
+
+      header p {
+        margin: 1rem auto 0;
+        max-width: 720px;
+        font-size: 1rem;
+        color: rgba(248, 250, 252, 0.9);
+      }
+
+      .page {
+        max-width: 1160px;
+        margin: 0 auto;
+        padding: 2rem 1rem 4rem;
+      }
+
+      .layout {
+        display: grid;
+        gap: 2rem;
+      }
+
+      @media (min-width: 960px) {
+        .layout {
+          grid-template-columns: minmax(0, 1fr) 280px;
+        }
+      }
+
+      .toc {
+        position: sticky;
+        top: 1rem;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 1.5rem;
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+      }
+
+      .toc h2 {
+        margin: 0 0 1rem;
+        font-size: 0.95rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .toc ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .toc li + li {
+        margin-top: 0.9rem;
+      }
+
+      .toc a {
+        color: var(--text);
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
+      }
+
+      .card h2,
+      .card h3 {
+        color: var(--text);
+      }
+
+      .card h2 {
+        margin-top: 0;
+      }
+
+      .card p,
+      .card li {
+        line-height: 1.75;
+      }
+
+      .card ul {
+        padding-left: 1.4rem;
+      }
+
+      .card img {
+        width: 100%;
+        border-radius: 20px;
+        margin-top: 1.5rem;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.4rem 0.9rem;
+        border-radius: 999px;
+        background: rgba(37, 99, 235, 0.12);
+        color: var(--primary-dark);
+        font-size: 0.92rem;
+        font-weight: 600;
+        margin-bottom: 1.25rem;
+      }
+
+      .highlight {
+        border-left: 4px solid #2563eb;
+        padding: 1rem 1rem 1rem 1rem;
+        background: #eff6ff;
+        border-radius: 16px;
+        margin: 1.5rem 0;
+      }
+
+      .highlight strong {
+        display: block;
+        margin-bottom: 0.4rem;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        font-weight: 600;
+        color: var(--primary);
+      }
+
+      .back-link:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <span class="badge">Hooked Guide</span>
+        <h1>Hooked Beginner's Guide</h1>
+        <p>Your first step to mastering Hooked's dangers, resource systems, and fishing mini-game.</p>
+      </div>
+    </header>
+
+    <main class="page">
+      <div class="layout">
+        <div>
+          <article class="card" id="overview">
+            <h2>Overview</h2>
+            <p>Hooked is a survival adventure game with resource gathering, exploration, and an engaging fishing mini-game. This guide is designed for new players who need a quick, clear introduction.</p>
+            <p>Game page: <a href="https://echerryart.itch.io/ld59hooked" target="_blank" rel="noopener">https://echerryart.itch.io/ld59hooked</a></p>
+            <img src="images/hooked1.png" alt="Hooked introduction image" />
+          </article>
+
+          <article class="card" id="basics">
+            <h2>I. Basic Game Mechanics</h2>
+            <h3>1. Lack of Beginner's Tutorial</h3>
+            <p>At first, Hooked may feel confusing because it does not include a detailed beginner tutorial. Pay attention to the interface and quest system to learn how the game works.</p>
+            <ul>
+              <li><strong>Understanding the Interface</strong>: Learn where inventory, equipment, quests, and settings are located. Knowing these controls saves time and helps you act quickly.</li>
+              <li><strong>Quest System</strong>: Main and side quests provide story guidance and tasks. Check quest hints often to avoid missing important objectives.</li>
+            </ul>
+            <h3>2. Overview of Gameplay</h3>
+            <ul>
+              <li><strong>Exploration and Gathering</strong>: Explore areas and collect resources to build a stable foundation.</li>
+              <li><strong>Crafting and Upgrading</strong>: Use resources to craft tools, gear, and upgrades. Prioritize items that improve survival and mobility.</li>
+            </ul>
+          </article>
+
+          <article class="card" id="danger">
+            <h2>II. Understanding Dangerous Elements</h2>
+            <h3>1. Identifying Threats</h3>
+            <p>Hooked includes environmental hazards like toxic gas and radiation. Identifying these threats early is the key to surviving longer.</p>
+            <ul>
+              <li><strong>Gases</strong>: Some areas contain harmful gas that causes continuous damage. Use protective equipment or masks before entering these zones.</li>
+              <li><strong>Radiation</strong>: Radiation can affect you quickly in certain areas. Leave the area immediately and use medicine or gear to reduce radiation.</li>
+            </ul>
+            <div class="highlight">
+              <strong>Important:</strong> Avoid dangerous zones when your health is low. Always retreat first and recover before continuing.
+            </div>
+            <h3>2. Strategies to Avoid Danger</h3>
+            <ul>
+              <li><strong>Monitor Health</strong>: Keep food and medicine ready so you can recover quickly.</li>
+              <li><strong>Observe the Environment</strong>: Watch for visual cues and changes in terrain. If danger appears, switch routes or retreat immediately.</li>
+            </ul>
+          </article>
+
+          <article class="card" id="fishing">
+            <h2>III. Mastering the Fishing Mini-Game</h2>
+            <p>Fishing is one of the most important systems in Hooked. It provides food and rewards, and mastering it will make your play experience much smoother.</p>
+            <h3>1. Understanding the Fishing Mechanism</h3>
+            <ul>
+              <li><strong>Controls</strong>: Hold the left mouse button to apply pressure and use the right mouse button to adjust the line. Avoid repeatedly clicking the left button.</li>
+            </ul>
+            <h3>2. Fishing Tips</h3>
+            <ul>
+              <li><strong>Observe Fish Behavior</strong>: Fish movement and surface ripples can tell you when to cast and when to react.</li>
+              <li><strong>Reaction Speed</strong>: When a fish bites, keep pressure on the left button and use the right button to manage the line. Practice makes this easier over time.</li>
+            </ul>
+            <h3>3. Common Misconceptions</h3>
+            <ul>
+              <li><strong>Misconception 1</strong>: Clicking the left mouse button repeatedly to increase force. <strong>Correct</strong>: Use steady pressure instead.</li>
+              <li><strong>Misconception 2</strong>: Ignoring line tension. <strong>Correct</strong>: Keep tension balanced to prevent losing the fish.</li>
+            </ul>
+          </article>
+
+          <article class="card" id="conclusion">
+            <h2>IV. Conclusion</h2>
+            <p>With this guide, you should feel more confident entering Hooked. Focus on the fundamentals, protect yourself from hazards, and practice fishing to improve steadily.</p>
+            <p>Good luck, enjoy the game, and return here whenever you need a quick refresher.</p>
+          </article>
+
+          <a class="back-link" href="../index.html">← Back to Game Guide Collection</a>
+        </div>
+
+        <aside class="toc">
+          <h2>Contents</h2>
+          <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#basics">Basic Game Mechanics</a></li>
+            <li><a href="#danger">Understanding Dangerous Elements</a></li>
+            <li><a href="#fishing">Fishing Mini-Game</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Guide Collection</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      header {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      .game-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1rem;
+      }
+      .game-item {
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        min-height: 260px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 1.5rem;
+        background-color: #111827;
+        background-size: cover;
+        background-position: center;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+      }
+      .game-item::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(15, 23, 42, 0.18), rgba(15, 23, 42, 0.85));
+      }
+      .game-item > * {
+        position: relative;
+        z-index: 1;
+      }
+      .game-item h3 {
+        margin-top: 0;
+        margin-bottom: 0.75rem;
+        font-size: 1.4rem;
+      }
+      .game-item p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.92);
+      }
+      .game-item a {
+        display: inline-flex;
+        margin-top: 1rem;
+        padding: 0.6rem 1.2rem;
+        background-color: rgba(255, 255, 255, 0.16);
+        color: white;
+        text-decoration: none;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: background-color 0.2s ease, transform 0.2s ease;
+      }
+      .game-item a:hover {
+        background-color: rgba(255, 255, 255, 0.28);
+        transform: translateY(-1px);
+      }
+      .game-item.hooked {
+        background-image: url('guides/images/hooked.png');
+      }
+      .game-item.nymble {
+        background-image: url('guides/images/nymble.png');
+      }
+      .game-item.zelda {
+        background: linear-gradient(135deg, rgba(34, 197, 94, 0.95), rgba(74, 222, 128, 0.85));
+      }
+      .game-item.league {
+        background: linear-gradient(135deg, rgba(37, 99, 235, 0.95), rgba(59, 130, 246, 0.85));
+      }
+      .game-item a:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Game Guide Collection</h1>
+      <p>All of the latest and hottest game guides in one place.</p>
+    </header>
+    <div class="container">
+      <div class="game-list">
+        <!-- Example game guide items -->
+        <div class="game-item hooked">
+          <h3>Hooked</h3>
+          <p>Beginner's guide to Hooked, including mechanics and fishing tips.</p>
+          <a href="guides/hooked.html">View Guide</a>
+        </div>
+        <div class="game-item nymble">
+          <h3>Nymble 2</h3>
+          <p>Guide for Nymble 2, including interface tips, puzzle strategies, and survival advice.</p>
+          <a href="guides/nymble2.html">View Guide</a>
+        </div>
+        <div class="game-item league">
+          <h3>League of Legends</h3>
+          <p>Popular MOBA guide covering objectives, laning, champion mastery, and team play.</p>
+          <a href="guides/league.html">View Guide</a>
+        </div>
+        <div class="game-item zelda">
+          <h3>The Legend of Zelda</h3>
+          <p>Open world adventure guide for The Legend of Zelda.</p>
+          <a href="guides/zelda.html">View Guide</a>
+        </div>
+        <!-- Add more games here -->
+      </div>
+    </div>
+  </body>
+</html>

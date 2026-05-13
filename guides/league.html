@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>League of Legends Game Guide</title>
+    <style>
+      :root {
+        --bg: #f7f8fb;
+        --surface: #ffffff;
+        --text: #111827;
+        --muted: #6b7280;
+        --primary: #0f172a;
+        --accent: #1d4ed8;
+        --border: #d1d5db;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: #0ea5e9;
+      }
+
+      header {
+        background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 100%);
+        color: white;
+        text-align: center;
+        padding: 4rem 1rem;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: clamp(2.4rem, 4vw, 3.8rem);
+      }
+
+      header p {
+        margin: 1rem auto 0;
+        max-width: 720px;
+        font-size: 1rem;
+        line-height: 1.75;
+        opacity: 0.95;
+      }
+
+      .page {
+        max-width: 1160px;
+        margin: 0 auto;
+        padding: 2rem 1rem 4rem;
+      }
+
+      .layout {
+        display: grid;
+        gap: 2rem;
+      }
+
+      @media (min-width: 960px) {
+        .layout {
+          grid-template-columns: minmax(0, 1fr) 280px;
+        }
+      }
+
+      .toc {
+        position: sticky;
+        top: 1rem;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 1.5rem;
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+      }
+
+      .toc h2 {
+        margin: 0 0 1rem;
+        font-size: 0.95rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .toc ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .toc li + li {
+        margin-top: 0.9rem;
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
+      }
+
+      .card h2,
+      .card h3 {
+        color: var(--text);
+      }
+
+      .card h2 {
+        margin-top: 0;
+      }
+
+      .card p,
+      .card li {
+        line-height: 1.75;
+      }
+
+      .card ul {
+        padding-left: 1.4rem;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        font-weight: 600;
+        color: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>League of Legends Game Guide</h1>
+      <p>Welcome to the comprehensive guide for League of Legends. Learn game objectives, laning strategies, champion mastery, and effective team communication.</p>
+    </header>
+
+    <main class="page">
+      <div class="layout">
+        <div>
+          <article class="card" id="basics">
+            <h2>I. Basic Game Knowledge</h2>
+            <h3>1. Game Interface</h3>
+            <ul>
+              <li><strong>Health and Mana Bars</strong>: Display your champion's health and mana.</li>
+              <li><strong>Minimap</strong>: Shows the map and the position of allies and enemies.</li>
+              <li><strong>Ability Icons</strong>: Represents your champion's skills available in battle.</li>
+              <li><strong>Gold Counter</strong>: Tracks gold earnings for purchasing items.</li>
+            </ul>
+            <h3>2. Controls</h3>
+            <ul>
+              <li><strong>Movement</strong>: Right-click to move your champion.</li>
+              <li><strong>Ability Use</strong>: Q, W, E, R keys for champion abilities.</li>
+              <li><strong>Item Use</strong>: 1-6 keys for item activations.</li>
+              <li><strong>Ping Commands</strong>: ALT + Click to alert teammates.</li>
+            </ul>
+          </article>
+
+          <article class="card" id="objective">
+            <h2>II. Game Objective and Strategies</h2>
+            <h3>1. Understanding Game Objectives</h3>
+            <ul>
+              <li><strong>Destroy Enemy Structures</strong>: The main goal is to destroy the enemy Nexus after breaking turrets and inhibitors.</li>
+              <li><strong>Objectives</strong>: Secure Dragons, Rift Heralds, and Baron Nashor for buffs and map control.</li>
+            </ul>
+            <h3>2. Laning Phase</h3>
+            <ul>
+              <li><strong>Last Hitting</strong>: Focus on last hitting minions to earn gold, rather than just damaging them.</li>
+              <li><strong>Trading</strong>: Engage in short skirmishes to gain advantage while minimizing your own damage.</li>
+            </ul>
+            <h3>3. Warding and Vision Control</h3>
+            <ul>
+              <li><strong>Place Wards</strong>: Use wards to gain map vision and avoid ambushes.</li>
+              <li><strong>Control Wards</strong>: Use control wards to deny enemy vision and secure strategic areas.</li>
+            </ul>
+          </article>
+
+          <article class="card" id="champion">
+            <h2>III. Champion Mastery</h2>
+            <h3>1. Choosing Your Champion</h3>
+            <ul>
+              <li><strong>Role Assignment</strong>: Understand Top, Mid, ADC, Support, and Jungle roles.</li>
+              <li><strong>Champion Pool</strong>: Master a small set of champions in each role to adapt to different situations.</li>
+            </ul>
+            <h3>2. Runes and Builds</h3>
+            <ul>
+              <li><strong>Runes</strong>: Choose runes that enhance your champion's strengths.</li>
+              <li><strong>Item Builds</strong>: Follow builds that suit the matchup and enemy team composition.</li>
+            </ul>
+          </article>
+
+          <article class="card" id="teamplay">
+            <h2>IV. Team Play and Communication</h2>
+            <h3>1. Team Dynamics</h3>
+            <ul>
+              <li><strong>Team Composition</strong>: Aim for balanced team damage, control, and survivability.</li>
+              <li><strong>Adaptability</strong>: Adjust your play if your lane is losing by roaming or helping teammates.</li>
+            </ul>
+            <h3>2. Communication</h3>
+            <ul>
+              <li><strong>Use Pings Effectively</strong>: Communicate missing enemies, objectives, and danger.</li>
+              <li><strong>Positive Attitude</strong>: Keep communication constructive to improve teamwork.</li>
+            </ul>
+          </article>
+
+          <article class="card" id="conclusion">
+            <h2>V. Conclusion</h2>
+            <p>We hope this guide helps you improve in League of Legends. Practice the basics, refine your champion mastery, and work with your team to achieve victory.</p>
+            <p>For more tips, visit official League resources, forums, and community content creators.</p>
+          </article>
+
+          <a class="back-link" href="../index.html">← Back to Game Guide Collection</a>
+        </div>
+
+        <aside class="toc">
+          <h2>Contents</h2>
+          <ul>
+            <li><a href="#basics">Basic Game Knowledge</a></li>
+            <li><a href="#objective">Game Objective and Strategies</a></li>
+            <li><a href="#champion">Champion Mastery</a></li>
+            <li><a href="#teamplay">Team Play and Communication</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </body>
+</html>
