@@ -91,6 +91,22 @@
       .game-item a:hover {
         background-color: #0056b3;
       }
+      .search-container {
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+      .search-input {
+        width: 100%;
+        max-width: 400px;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        outline: none;
+      }
+      .search-input:focus {
+        border-color: #2563eb;
+      }
     </style>
   </head>
   <body>
@@ -99,6 +115,9 @@
       <p>All of the latest and hottest game guides in one place.</p>
     </header>
     <div class="container">
+      <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search for games..." id="searchInput">
+      </div>
       <div class="game-list">
         <!-- Example game guide items -->
         <div class="game-item nymble">
@@ -124,5 +143,25 @@
         <!-- Add more games here -->
       </div>
     </div>
+    <footer style="background-color: #333; color: white; text-align: center; padding: 1rem; margin-top: 2rem;">
+      <p>&copy; 2026 Game Guide Collection. <a href="pages/privacy.html" style="color: #ccc;">Privacy Policy</a> | <a href="pages/terms.html" style="color: #ccc;">Terms of Service</a> | <a href="pages/disclaimer.html" style="color: #ccc;">Disclaimer</a> | <a href="pages/about.html" style="color: #ccc;">About Us</a> | <a href="pages/contact.html" style="color: #ccc;">Contact Us</a> | <a href="pages/copyright.html" style="color: #ccc;">Copyright</a></p>
+    </footer>
+    <script>
+      const searchInput = document.getElementById('searchInput');
+      const gameItems = document.querySelectorAll('.game-item');
+
+      searchInput.addEventListener('input', function() {
+        const query = this.value.toLowerCase();
+        gameItems.forEach(item => {
+          const title = item.querySelector('h3').textContent.toLowerCase();
+          const desc = item.querySelector('p').textContent.toLowerCase();
+          if (title.includes(query) || desc.includes(query)) {
+            item.style.display = 'flex';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    </script>
   </body>
 </html>
