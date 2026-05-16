@@ -1,0 +1,11 @@
+{
+  "name": "gamenote",
+  "version": "1.0.0",
+  "description": "Game Note Application",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.44.4"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -43,10 +43,14 @@
         box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
       }
       .game-item::before {
-        content: '';
+        content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(180deg, rgba(15, 23, 42, 0.18), rgba(15, 23, 42, 0.85));
+        background: linear-gradient(
+          180deg,
+          rgba(15, 23, 42, 0.18),
+          rgba(15, 23, 42, 0.85)
+        );
       }
       .game-item > * {
         position: relative;
@@ -70,23 +74,33 @@
         text-decoration: none;
         border-radius: 999px;
         border: 1px solid rgba(255, 255, 255, 0.2);
-        transition: background-color 0.2s ease, transform 0.2s ease;
+        transition:
+          background-color 0.2s ease,
+          transform 0.2s ease;
       }
       .game-item a:hover {
         background-color: rgba(255, 255, 255, 0.28);
         transform: translateY(-1px);
       }
       .game-item.hooked {
-        background-image: url('guides/images/hooked.png');
+        background-image: url("guides/images/hooked.png");
       }
       .game-item.nymble {
-        background-image: url('guides/images/nymble.png');
+        background-image: url("guides/images/nymble.png");
       }
       .game-item.zelda {
-        background: linear-gradient(135deg, rgba(34, 197, 94, 0.95), rgba(74, 222, 128, 0.85));
+        background: linear-gradient(
+          135deg,
+          rgba(34, 197, 94, 0.95),
+          rgba(74, 222, 128, 0.85)
+        );
       }
       .game-item.league {
-        background: linear-gradient(135deg, rgba(37, 99, 235, 0.95), rgba(59, 130, 246, 0.85));
+        background: linear-gradient(
+          135deg,
+          rgba(37, 99, 235, 0.95),
+          rgba(59, 130, 246, 0.85)
+        );
       }
       .game-item a:hover {
         background-color: #0056b3;
@@ -116,23 +130,36 @@
     </header>
     <div class="container">
       <div class="search-container">
-        <input type="text" class="search-input" placeholder="Search for games..." id="searchInput">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Search for games..."
+          id="searchInput"
+        />
       </div>
       <div class="game-list">
         <!-- Example game guide items -->
         <div class="game-item nymble">
           <h3>Nymble 2</h3>
-          <p>Guide for Nymble 2, including interface tips, puzzle strategies, and survival advice.</p>
+          <p>
+            Guide for Nymble 2, including interface tips, puzzle strategies, and
+            survival advice.
+          </p>
           <a href="guides/nymble2.html">View Guide</a>
         </div>
         <div class="game-item hooked">
           <h3>Hooked</h3>
-          <p>Beginner's guide to Hooked, including mechanics and fishing tips.</p>
+          <p>
+            Beginner's guide to Hooked, including mechanics and fishing tips.
+          </p>
           <a href="guides/hooked.html">View Guide</a>
         </div>
         <div class="game-item league">
           <h3>League of Legends</h3>
-          <p>Popular MOBA guide covering objectives, laning, champion mastery, and team play.</p>
+          <p>
+            Popular MOBA guide covering objectives, laning, champion mastery,
+            and team play.
+          </p>
           <a href="guides/league.html">View Guide</a>
         </div>
         <div class="game-item zelda">
@@ -143,22 +170,38 @@
         <!-- Add more games here -->
       </div>
     </div>
-    <footer style="background-color: #333; color: white; text-align: center; padding: 1rem; margin-top: 2rem;">
-      <p>&copy; 2026 Game Guide Collection. <a href="pages/privacy.html" style="color: #ccc;">Privacy Policy</a> | <a href="pages/terms.html" style="color: #ccc;">Terms of Service</a> | <a href="pages/disclaimer.html" style="color: #ccc;">Disclaimer</a> | <a href="pages/about.html" style="color: #ccc;">About Us</a> | <a href="pages/contact.html" style="color: #ccc;">Contact Us</a> | <a href="pages/copyright.html" style="color: #ccc;">Copyright</a></p>
+    <footer
+      style="
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        margin-top: 2rem;
+      "
+    >
+      <p>
+        &copy; 2026 Game Guide Collection.
+        <a href="pages/privacy.html" style="color: #ccc">Privacy Policy</a> |
+        <a href="pages/terms.html" style="color: #ccc">Terms of Service</a> |
+        <a href="pages/disclaimer.html" style="color: #ccc">Disclaimer</a> |
+        <a href="pages/about.html" style="color: #ccc">About Us</a> |
+        <a href="pages/contact.html" style="color: #ccc">Contact Us</a> |
+        <a href="pages/copyright.html" style="color: #ccc">Copyright</a>
+      </p>
     </footer>
     <script>
-      const searchInput = document.getElementById('searchInput');
-      const gameItems = document.querySelectorAll('.game-item');
+      const searchInput = document.getElementById("searchInput");
+      const gameItems = document.querySelectorAll(".game-item");
 
-      searchInput.addEventListener('input', function() {
+      searchInput.addEventListener("input", function () {
         const query = this.value.toLowerCase();
-        gameItems.forEach(item => {
-          const title = item.querySelector('h3').textContent.toLowerCase();
-          const desc = item.querySelector('p').textContent.toLowerCase();
+        gameItems.forEach((item) => {
+          const title = item.querySelector("h3").textContent.toLowerCase();
+          const desc = item.querySelector("p").textContent.toLowerCase();
           if (title.includes(query) || desc.includes(query)) {
-            item.style.display = 'flex';
+            item.style.display = "flex";
           } else {
-            item.style.display = 'none';
+            item.style.display = "none";
           }
         });
       });

@@ -22,77 +22,73 @@ export default async function handler(req, res) {
     return res.status(204).end();
   }
 
-  // 1. 处理获取留言的请求 (GET)
+  // 1. 处理获取回复的请求 (GET)
   if (req.method === "GET") {
     try {
-      const page = req.query.page || req.query.pageId || "default";
+      const commentId = req.query.comment_id;
+
+      if (!commentId) {
+        return res.status(400).json({ error: "comment_id is required" });
+      }
 
       let query = supabase
-        .from("comments")
+        .from("replies")
         .select("*")
         .eq("is_deleted", 0)
-        .order("created_at", { ascending: false });
-
-      if (page) {
-        query = query.eq("page", page);
-      }
+        .eq("comment_id", parseInt(commentId))
+        .order("created_at", { ascending: true });
 
       const { data, error } = await query;
       if (error) {
-        console.error("GET comments error:", error);
+        console.error("GET replies error:", error);
         return res.status(500).json({ error: error.message });
       }
 
       return res.status(200).json({ data });
     } catch (err) {
-      console.error("GET comments catch error:", err);
+      console.error("GET replies catch error:", err);
       return res.status(500).json({ error: err.message });
     }
   }
 
-  // 2. 处理提交留言的请求 (POST)
+  // 2. 处理提交回复的请求 (POST)
   if (req.method === "POST") {
     try {
-      // 兼容前端发送的字段名：nickname 或 username，pageId 或 page
-      const { content, username, nickname, page, pageId } = req.body;
-      const user = username || nickname;
-      const pageValue = page || pageId || "default";
+      const { comment_id, username, content } = req.body;
 
-      if (!user || !user.trim() || !content || !content.trim()) {
+      if (
+        !comment_id ||
+        !username ||
+        !username.trim() ||
+        !content ||
+        !content.trim()
+      ) {
         return res
           .status(400)
-          .json({ error: "Username and content are required" });
+          .json({ error: "comment_id, username and content are required" });
       }
 
-      // 获取客户端 IP 地址
-      const clientIP =
-        req.headers["x-forwarded-for"]?.split(",")[0] ||
-        req.headers["x-real-ip"] ||
-        req.socket?.remoteAddress ||
-        "unknown";
-
       const payload = {
-        username: user.trim(),
+        comment_id: parseInt(comment_id),
+        username: username.trim(),
         content: content.trim(),
-        page: pageValue,
         is_deleted: 0,
-        ip: clientIP,
       };
 
-      console.log("Inserting comment:", payload);
-      const { data, error } = await supabase.from("comments").insert([payload]);
+      console.log("Inserting reply:", payload);
+      const { data, error } = await supabase.from("replies").insert([payload]);
 
       if (error) {
-        console.error("POST comment error:", error);
+        console.error("POST reply error:", error);
         return res.status(500).json({ error: error.message });
       }
 
-      console.log("Comment inserted:", data);
+      console.log("Reply inserted:", data);
       return res
         .status(200)
-        .json({ message: "Comment submitted successfully", data });
+        .json({ message: "Reply submitted successfully", data });
     } catch (err) {
-      console.error("POST comment catch error:", err);
+      console.error("POST reply catch error:", err);
       return res
         .status(400)
         .json({ error: "Request format error", details: err.message });

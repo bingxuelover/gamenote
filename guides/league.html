@@ -141,9 +141,85 @@
         font-weight: 600;
         color: var(--accent);
       }
+          .comment-section {
+        margin-top: 2rem;
+      }
+
+      .comment-form {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .comment-form label {
+        display: grid;
+        gap: 0.5rem;
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .comment-form input,
+      .comment-form textarea {
+        width: 100%;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 0.95rem 1rem;
+        font: inherit;
+        background: #ffffff;
+        color: var(--text);
+      }
+
+      .comment-form textarea {
+        min-height: 140px;
+        resize: vertical;
+      }
+
+      .form-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      .comment-form button {
+        border: none;
+        border-radius: 999px;
+        background: var(--primary);
+        color: white;
+        padding: 0.95rem 1.75rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .comment-form button:hover {
+        opacity: 0.95;
+      }
+
+      .comment-status {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .comment-list {
+        margin-top: 1.5rem;
+        display: grid;
+        gap: 1rem;
+      }
+
+      .comment-card {
+        background: var(--surface-soft, #f8fafc);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 1.25rem 1.35rem;
+      }
+
+      .comment-card strong {
+        display: block;
+        margin-bottom: 0.35rem;
+      }
+
     </style>
   </head>
-  <body>
+  <body data-page="league">
     <header>
       <h1>League of Legends Game Guide</h1>
       <p>
@@ -300,6 +376,27 @@
             <a href="../pages/contact.html">Contact Us</a> page or email
             <a href="mailto:contact@gamefun.cc">contact@gamefun.cc</a>.
           </div>
+          <article class="card comment-section">
+            <h2>Comments</h2>
+            <p>Share your guide tips, questions, or game suggestions here.</p>
+            <form id="commentForm" class="comment-form">
+              <label>
+                Username
+                <input id="commentName" type="text" placeholder="Your username" maxlength="32" required />
+              </label>
+              <label>
+                Comment
+                <textarea id="commentContent" placeholder="Write your comment..." maxlength="300" required></textarea>
+              </label>
+              <div class="form-actions">
+                <button type="submit">Submit Comment</button>
+                <span id="commentStatus" class="comment-status"></span>
+              </div>
+            </form>
+            <div id="commentList" class="comment-list">
+              <p>Loading comments...</p>
+            </div>
+          </article>
           <a class="back-link" href="../index.html"
             >← Back to Game Guide Collection</a
           >
@@ -316,6 +413,101 @@
           </ul>
         </aside>
       </div>
-    </main>
+        <script>
+      const pageId = document.body.dataset.page || "default";
+      const commentForm = document.getElementById("commentForm");
+      const commentList = document.getElementById("commentList");
+      const commentStatus = document.getElementById("commentStatus");
+
+      function escapeHTML(value) {
+        return String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      function renderComments(comments) {
+        if (!comments || comments.length === 0) {
+          commentList.innerHTML = "<p>No comments yet, feel free to share your thoughts!</p>";
+          return;
+        }
+        commentList.innerHTML = comments
+          .map((comment) => {
+            const createdAt = comment.created_at || comment.createdAt || comment.inserted_at || comment.insertedAt;
+            const timeText = createdAt ? new Date(createdAt).toLocaleString() : "";
+            return `
+              <div class="comment-card">
+                <strong>${escapeHTML(comment.nickname || "匿名")}</strong>
+                <p>${escapeHTML(comment.content || "")}</p>
+                <time style="color: var(--muted); font-size: 0.95rem;">${escapeHTML(timeText)}</time>
+              </div>
+            `;
+          })
+          .join("");
+      }
+
+      async function loadComments() {
+        commentList.innerHTML = "<p>Loading comments...</p>";
+        try {
+          console.log("get page", pageId);
+          
+          const res = await fetch(`/api/comment?pageId=${encodeURIComponent(pageId)}`);
+          console.log('await');
+          
+          const result = await res.json();
+          console.log(result);
+          
+          if (!res.ok) throw new Error(result.error || "Failed to load");
+          renderComments(result.data);
+        } catch (error) {
+          commentList.innerHTML = "<p>Failed to load comments. Please try again later.</p>";
+          console.error('Error:',error);
+        }
+      }
+
+      commentForm.addEventListener("submit", async (event) => {
+        console.log('submit', event);
+        
+        event.preventDefault();
+        const nickname = document.getElementById("commentName").value.trim();
+        const content = document.getElementById("commentContent").value.trim();
+console.log(nickname, content);
+
+        if (!nickname || !content) {  
+          commentStatus.textContent = "Username and comment content cannot be empty.";
+          return;
+        }
+
+        commentStatus.textContent = "Submitting...";
+        commentForm.querySelector("button").disabled = true;
+
+        try {
+          const res = await fetch("/api/comment", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ nickname, content, pageId }),
+          });
+          const result = await res.json();
+          console.log('res:',result);
+          
+          if (!res.ok) throw new Error(result.error || "Submission failed");
+          commentStatus.textContent = "Comment submitted!";
+          commentForm.reset();
+          await loadComments();
+        } catch (error) {
+          commentStatus.textContent = error.message || "Error submitting comment.";
+          console.error(error);
+        } finally {
+          commentForm.querySelector("button").disabled = false;
+          setTimeout(() => {
+            commentStatus.textContent = "";
+          }, 3000);
+        }
+      });
+
+      loadComments();
+    </script>
   </body>
 </html>
