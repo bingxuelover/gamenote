@@ -3,15 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>League of Legends Game Guide</title>
+    <title>MooS Game Guide</title>
     <style>
       :root {
-        --bg: #f7f8fb;
+        --bg: #f4f4f8;
         --surface: #ffffff;
         --text: #111827;
         --muted: #6b7280;
-        --primary: #0f172a;
-        --accent: #1d4ed8;
+        --primary: #2563eb;
+        --primary-dark: #1d4ed8;
         --border: #d1d5db;
       }
 
@@ -34,24 +34,30 @@
       }
 
       a {
-        color: var(--accent);
+        color: var(--primary);
         text-decoration: none;
       }
 
       a:hover {
-        color: #0ea5e9;
+        color: var(--primary-dark);
       }
 
       header {
-        background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 100%);
+        position: relative;
+        min-height: 320px;
+        padding: 4rem 1rem;
+        background-image:
+          linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)),
+          url("images/moss.png");
+        background-size: cover;
+        background-position: center;
         color: white;
         text-align: center;
-        padding: 4rem 1rem;
       }
 
       header h1 {
         margin: 0;
-        font-size: clamp(2.4rem, 4vw, 3.8rem);
+        font-size: clamp(2.4rem, 4vw, 4rem);
       }
 
       header p {
@@ -137,15 +143,21 @@
         padding-left: 1.4rem;
       }
 
-      .back-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin-top: 1rem;
-        font-weight: 600;
-        color: var(--accent);
+      .card img {
+        width: 100%;
+        border-radius: 20px;
+        margin-top: 1.5rem;
       }
-          .comment-section {
+
+      .highlight {
+        border-left: 4px solid #2563eb;
+        padding: 1rem 1rem 1rem 1rem;
+        background: #eff6ff;
+        border-radius: 16px;
+        margin: 1.5rem 0;
+      }
+
+      .comment-section {
         margin-top: 2rem;
       }
 
@@ -198,9 +210,14 @@
         opacity: 0.95;
       }
 
+      .comment-form button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
       .comment-status {
-        color: var(--muted);
         font-size: 0.95rem;
+        color: var(--muted);
       }
 
       .comment-list {
@@ -210,187 +227,175 @@
       }
 
       .comment-card {
-        background: var(--surface-soft, #f8fafc);
+        background: var(--bg);
+        border-radius: 16px;
+        padding: 1rem 1.25rem;
         border: 1px solid var(--border);
-        border-radius: 20px;
-        padding: 1.25rem 1.35rem;
       }
 
-      .comment-card strong {
-        display: block;
-        margin-bottom: 0.35rem;
+      .comment-card p {
+        margin: 0.5rem 0;
       }
 
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        font-weight: 600;
+        color: var(--primary);
+      }
     </style>
   </head>
-  <body data-page="league">
+  <body data-page="moss">
     <header>
-      <h1>League of Legends Game Guide</h1>
+      <h1>MooS Strategy Guide</h1>
       <p>
-        Welcome to the comprehensive guide for League of Legends. Learn game
-        objectives, laning strategies, champion mastery, and effective team
-        communication.
+        Explore the mysterious world of MooS with a concise guide for
+        exploration, navigation, and the puzzles that shape each atmospheric
+        chapter.
       </p>
     </header>
 
     <main class="page">
       <div class="layout">
         <div>
-          <article class="card" id="basics">
-            <h2>I. Basic Game Knowledge</h2>
-            <h3>1. Game Interface</h3>
+          <article class="card" id="overview">
+            <h2>Game Overview</h2>
+            <p>
+              MooS is a charming, exploration-driven indie game where you guide
+              a small creature through misty environments and gentle puzzles.
+              The game blends environmental storytelling with simple platforming
+              mechanics and a strong sense of discovery.
+            </p>
+            <img src="images/moss2.png" alt="MooS forest scene" />
+          </article>
+
+          <article class="card" id="controls">
+            <h2>Core Controls</h2>
             <ul>
               <li>
-                <strong>Health and Mana Bars</strong>: Display your champion's
-                health and mana.
+                <strong>Move</strong>: Use the arrow keys or WASD to walk.
               </li>
               <li>
-                <strong>Minimap</strong>: Shows the map and the position of
-                allies and enemies.
+                <strong>Jump</strong>: Press the jump button to clear gaps and
+                reach higher platforms.
               </li>
               <li>
-                <strong>Ability Icons</strong>: Represents your champion's
-                skills available in battle.
-              </li>
-              <li>
-                <strong>Gold Counter</strong>: Tracks gold earnings for
-                purchasing items.
+                <strong>Interact</strong>: Approach glowing objects and press
+                the action key to activate or examine them.
               </li>
             </ul>
-            <h3>2. Controls</h3>
+            <p>
+              Most of MooS's challenges rely on timing and observation rather
+              than fast reflexes, so take your time to explore each area.
+            </p>
+          </article>
+
+          <article class="card" id="exploration">
+            <h2>Exploration Tips</h2>
+            <p>
+              The world of MooS is built around subtle paths and hidden routes.
+              Search for soft glows, unusual terrain, and walls that look
+              slightly different from the surroundings.
+            </p>
             <ul>
               <li>
-                <strong>Movement</strong>: Right-click to move your champion.
+                <strong>Listen for clues</strong>: Sound often signals an
+                important object or event nearby.
               </li>
               <li>
-                <strong>Ability Use</strong>: Q, W, E, R keys for champion
-                abilities.
+                <strong>Use light carefully</strong>: Some puzzles require you
+                to guide light or shadows to reveal the next step.
               </li>
-              <li><strong>Item Use</strong>: 1-6 keys for item activations.</li>
               <li>
-                <strong>Ping Commands</strong>: ALT + Click to alert teammates.
+                <strong>Backtrack when needed</strong>: New areas may open after
+                solving a puzzle in a different zone.
+              </li>
+            </ul>
+            <img src="images/moss3.png" alt="MooS puzzle area" />
+          </article>
+
+          <article class="card" id="puzzles">
+            <h2>Puzzle Strategy</h2>
+            <p>
+              MooS uses environmental puzzles that feel organic rather than
+              mechanical. Pay attention to how each object reacts to your
+              movement.
+            </p>
+            <ul>
+              <li>
+                <strong>Observe the pattern</strong>: Walk around the puzzle and
+                note moving platforms, lights, and environmental triggers.
+              </li>
+              <li>
+                <strong>Stay calm</strong>: If a puzzle feels difficult, step
+                back and try a different angle. The solution is often about
+                timing rather than speed.
               </li>
             </ul>
           </article>
 
-          <article class="card" id="objective">
-            <h2>II. Game Objective and Strategies</h2>
-            <h3>1. Understanding Game Objectives</h3>
+          <article class="card" id="survival">
+            <h2>Survival and Progression</h2>
+            <p>
+              MooS is not a combat game, but it still asks you to avoid hazards
+              and use the environment wisely. Keep moving and explore every
+              path.
+            </p>
             <ul>
               <li>
-                <strong>Destroy Enemy Structures</strong>: The main goal is to
-                destroy the enemy Nexus after breaking turrets and inhibitors.
+                <strong>Watch your surroundings</strong>: Some surfaces can
+                collapse or hide new passages once triggered.
               </li>
               <li>
-                <strong>Objectives</strong>: Secure Dragons, Rift Heralds, and
-                Baron Nashor for buffs and map control.
-              </li>
-            </ul>
-            <h3>2. Laning Phase</h3>
-            <ul>
-              <li>
-                <strong>Last Hitting</strong>: Focus on last hitting minions to
-                earn gold, rather than just damaging them.
-              </li>
-              <li>
-                <strong>Trading</strong>: Engage in short skirmishes to gain
-                advantage while minimizing your own damage.
-              </li>
-            </ul>
-            <h3>3. Warding and Vision Control</h3>
-            <ul>
-              <li>
-                <strong>Place Wards</strong>: Use wards to gain map vision and
-                avoid ambushes.
-              </li>
-              <li>
-                <strong>Control Wards</strong>: Use control wards to deny enemy
-                vision and secure strategic areas.
-              </li>
-            </ul>
-          </article>
-
-          <article class="card" id="champion">
-            <h2>III. Champion Mastery</h2>
-            <h3>1. Choosing Your Champion</h3>
-            <ul>
-              <li>
-                <strong>Role Assignment</strong>: Understand Top, Mid, ADC,
-                Support, and Jungle roles.
-              </li>
-              <li>
-                <strong>Champion Pool</strong>: Master a small set of champions
-                in each role to adapt to different situations.
-              </li>
-            </ul>
-            <h3>2. Runes and Builds</h3>
-            <ul>
-              <li>
-                <strong>Runes</strong>: Choose runes that enhance your
-                champion's strengths.
-              </li>
-              <li>
-                <strong>Item Builds</strong>: Follow builds that suit the
-                matchup and enemy team composition.
-              </li>
-            </ul>
-          </article>
-
-          <article class="card" id="teamplay">
-            <h2>IV. Team Play and Communication</h2>
-            <h3>1. Team Dynamics</h3>
-            <ul>
-              <li>
-                <strong>Team Composition</strong>: Aim for balanced team damage,
-                control, and survivability.
-              </li>
-              <li>
-                <strong>Adaptability</strong>: Adjust your play if your lane is
-                losing by roaming or helping teammates.
-              </li>
-            </ul>
-            <h3>2. Communication</h3>
-            <ul>
-              <li>
-                <strong>Use Pings Effectively</strong>: Communicate missing
-                enemies, objectives, and danger.
-              </li>
-              <li>
-                <strong>Positive Attitude</strong>: Keep communication
-                constructive to improve teamwork.
+                <strong>Collect carefully</strong>: Items are usually placed
+                near secrets, so don’t ignore small alcoves or side paths.
               </li>
             </ul>
           </article>
 
           <article class="card" id="conclusion">
-            <h2>V. Conclusion</h2>
+            <h2>Final Advice</h2>
             <p>
-              We hope this guide helps you improve in League of Legends.
-              Practice the basics, refine your champion mastery, and work with
-              your team to achieve victory.
+              MooS is about atmosphere and thoughtful movement. Enjoy the slow
+              reveal of each area, and let the game’s visuals and audio guide
+              you. If you get stuck, scan the scene for subtle differences and
+              try interacting with every glowing object.
             </p>
             <p>
-              For more tips, visit official League resources, forums, and
-              community content creators.
+              Play the game here:
+              <a
+                href="https://noelcody.itch.io/moss-moss"
+                target="_blank"
+                rel="noopener"
+                >MooS on itch.io</a
+              >
             </p>
           </article>
 
-          <div class="highlight">
-            <strong>Need help?</strong> Visit our
-            <a href="../pages/contact.html">Contact Us</a> page or email
-            <a href="mailto:contact@gamefun.cc">contact@gamefun.cc</a>.
-          </div>
           <article class="card comment-section">
             <h2>Comments</h2>
             <p>Share your guide tips, questions, or game suggestions here.</p>
             <form id="commentForm" class="comment-form">
               <label>
                 Username
-                <input id="commentName" type="text" placeholder="Your username" maxlength="32" required />
+                <input
+                  id="commentName"
+                  type="text"
+                  placeholder="Your username"
+                  maxlength="32"
+                  required
+                />
               </label>
               <label>
                 Comment
-                <textarea id="commentContent" placeholder="Write your comment..." maxlength="300" required></textarea>
+                <textarea
+                  id="commentContent"
+                  placeholder="Write your comment..."
+                  maxlength="300"
+                  required
+                ></textarea>
               </label>
               <div class="form-actions">
                 <button type="submit">Submit Comment</button>
@@ -401,6 +406,7 @@
               <p>Loading comments...</p>
             </div>
           </article>
+
           <a class="back-link" href="../index.html"
             >← Back to Game Guide Collection</a
           >
@@ -409,16 +415,18 @@
         <aside class="toc">
           <h2>Contents</h2>
           <ul>
-            <li><a href="#basics">Basic Game Knowledge</a></li>
-            <li><a href="#objective">Game Objective and Strategies</a></li>
-            <li><a href="#champion">Champion Mastery</a></li>
-            <li><a href="#teamplay">Team Play and Communication</a></li>
-            <li><a href="#conclusion">Conclusion</a></li>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#controls">Controls</a></li>
+            <li><a href="#exploration">Exploration Tips</a></li>
+            <li><a href="#puzzles">Puzzle Strategy</a></li>
+            <li><a href="#survival">Survival and Progression</a></li>
+            <li><a href="#conclusion">Final Advice</a></li>
           </ul>
         </aside>
       </div>
-        <script>
-      const pageId = document.body.dataset.page || "default";
+    </main>
+    <script>
+      const pageId = document.body.dataset.page || "moss";
       const commentForm = document.getElementById("commentForm");
       const commentList = document.getElementById("commentList");
       const commentStatus = document.getElementById("commentStatus");
@@ -429,21 +437,28 @@
           .replace(/</g, "&lt;")
           .replace(/>/g, "&gt;")
           .replace(/"/g, "&quot;")
-          .replace(/'/g, "&#39;");
+          .replace(/'/g, "&#039;");
       }
 
       function renderComments(comments) {
         if (!comments || comments.length === 0) {
-          commentList.innerHTML = "<p>No comments yet, feel free to share your thoughts!</p>";
+          commentList.innerHTML =
+            "<p>No comments yet, feel free to share your thoughts!</p>";
           return;
         }
         commentList.innerHTML = comments
           .map((comment) => {
-            const createdAt = comment.created_at || comment.createdAt || comment.inserted_at || comment.insertedAt;
-            const timeText = createdAt ? new Date(createdAt).toLocaleString() : "";
+            const createdAt =
+              comment.created_at ||
+              comment.createdAt ||
+              comment.inserted_at ||
+              comment.insertedAt;
+            const timeText = createdAt
+              ? new Date(createdAt).toLocaleString()
+              : "";
             return `
               <div class="comment-card">
-                <strong>${escapeHTML(comment.nickname || "匿名")}</strong>
+                <strong>${escapeHTML(comment.username || "Anonymous")}</strong>
                 <p>${escapeHTML(comment.content || "")}</p>
                 <time style="color: var(--muted); font-size: 0.95rem;">${escapeHTML(timeText)}</time>
               </div>
@@ -455,32 +470,27 @@
       async function loadComments() {
         commentList.innerHTML = "<p>Loading comments...</p>";
         try {
-          console.log("get page", pageId);
-          
-          const res = await fetch(`/api/comment?pageId=${encodeURIComponent(pageId)}`);
-          console.log('await');
-          
+          const res = await fetch(
+            `/api/comment?page=${encodeURIComponent(pageId)}`,
+          );
           const result = await res.json();
-          console.log(result);
-          
           if (!res.ok) throw new Error(result.error || "Failed to load");
           renderComments(result.data);
         } catch (error) {
-          commentList.innerHTML = "<p>Failed to load comments. Please try again later.</p>";
-          console.error('Error:',error);
+          commentList.innerHTML =
+            "<p>Failed to load comments. Please try again later.</p>";
+          console.error(error);
         }
       }
 
       commentForm.addEventListener("submit", async (event) => {
-        console.log('submit', event);
-        
         event.preventDefault();
-        const nickname = document.getElementById("commentName").value.trim();
+        const username = document.getElementById("commentName").value.trim();
         const content = document.getElementById("commentContent").value.trim();
-console.log(nickname, content);
 
-        if (!nickname || !content) {  
-          commentStatus.textContent = "Username and comment content cannot be empty.";
+        if (!username || !content) {
+          commentStatus.textContent =
+            "Username and comment content cannot be empty.";
           return;
         }
 
@@ -491,17 +501,16 @@ console.log(nickname, content);
           const res = await fetch("/api/comment", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ nickname, content, pageId }),
+            body: JSON.stringify({ username, content, page: pageId }),
           });
           const result = await res.json();
-          console.log('res:',result);
-          
           if (!res.ok) throw new Error(result.error || "Submission failed");
           commentStatus.textContent = "Comment submitted!";
           commentForm.reset();
           await loadComments();
         } catch (error) {
-          commentStatus.textContent = error.message || "Error submitting comment.";
+          commentStatus.textContent =
+            error.message || "Error submitting comment.";
           console.error(error);
         } finally {
           commentForm.querySelector("button").disabled = false;

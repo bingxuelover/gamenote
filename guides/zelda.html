@@ -64,6 +64,7 @@
       .layout {
         display: grid;
         gap: 2rem;
+        align-items: start;
       }
 
       @media (min-width: 960px) {
@@ -75,6 +76,9 @@
       .toc {
         position: sticky;
         top: 1rem;
+        align-self: start;
+        max-height: calc(100vh - 2rem);
+        overflow: auto;
         background: var(--surface);
         border: 1px solid var(--border);
         border-radius: 20px;
