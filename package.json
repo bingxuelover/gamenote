@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Game Note Application",
   "dependencies": {
-    "@supabase/supabase-js": "^2.44.4"
+    "@supabase/supabase-js": "^2.44.4",
+    "@vercel/analytics": "^2.0.1"
   },
   "engines": {
     "node": ">=18"
